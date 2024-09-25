@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matematika</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div>
+        <input type="radio" name="operator" value="+" checked>+<span>    </span>
+        <input type="radio" name="operator" value="-">-<span>    </span>
+        <input type="radio" name="operator" value="*">*<span>    </span>
+        <input type="radio" name="operator" value="/">/<span>    </span>
+    </div>
+    <div></div>
+        <input type="radio" name="digit" value="11" checked>10<span>    </span>
+        <input type="radio" name="digit" value="101">100<span>    </span>
+        <input type="radio" name="digit" value="1001">1000<span>    </span>
+    </div>
+    <div id="body">
+        <h1 id="broj1"></h1>
+        <h1 id="znak">+</h1>
+        <h1 id="broj2">6</h1>
+        <input id="result" type="text">
+        <input type="button" value="⚽" onclick="test()"></br>
+        <h1 id="tocno" style="display: none;">✅</h1>
+        <h1 id="netocno" style="display: none;">❌</h1>
+        <script src="./index.js"></script>
+    </div>
+</body>
+</html>
