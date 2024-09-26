@@ -65,6 +65,7 @@ function status(){
     }else if(znak==="*"){
         [broj1, broj2] = generate(Number(digit), 11);
     }else if(znak==="/"){
+        do{
         [broj1, broj2] = generate(Number(digit), 11);
         if(broj2>broj1){
             let temp = broj2;
@@ -73,9 +74,7 @@ function status(){
         }
         let temp = Math.trunc(broj1 / broj2);
         broj1 = broj2 * temp;
-        if(Number.isNaN(broj1)){
-            broj1 = Number(digit) - 1;
-        }
+        }while(Number.isNaN(broj1)||Number.isNaN(broj2)||broj1===0||broj2===0);
     }
     return [broj1, broj2, znak];
 }
