@@ -10,7 +10,7 @@ znak.innerHTML = operacija;
 const tocno = document.getElementById("tocno");
 const netocno = document.getElementById("netocno");
 function test(){
-    if(eval(`${broj1} ${operacija} ${broj2} === ${rezultat.value}`)){
+    if(eval(`${broj1} ${operacija} ${broj2} === ${parseInt(rezultat.value)}`)){
         netocno.style.display = "none";
         tocno.style.display = "inline";
         [broj1, broj2, operacija] = status();
@@ -66,14 +66,14 @@ function status(){
         [broj1, broj2] = generate(Number(digit), 11);
     }else if(znak==="/"){
         do{
-            [broj1, broj2] = generate(Number(digit), 11);
-            if(broj2>broj1){
-                let temp = broj2;
-                broj2 = broj1;
-                broj1 = temp;
-            }
-            let temp = Math.trunc(broj1 / broj2);
-            broj1 = broj2 * temp;
+        [broj1, broj2] = generate(Number(digit), 11);
+        if(broj2>broj1){
+            let temp = broj2;
+            broj2 = broj1;
+            broj1 = temp;
+        }
+        let temp = Math.trunc(broj1 / broj2);
+        broj1 = broj2 * temp;
         }while(Number.isNaN(broj1)||Number.isNaN(broj2)||broj1===0||broj2===0);
     }
     return [broj1, broj2, znak];
