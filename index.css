@@ -13,3 +13,9 @@ body{
     background-image: url('background-image.png');
     background-size: auto;
 }
+
+.pangolin-regular {
+    font-family: "Pangolin", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
