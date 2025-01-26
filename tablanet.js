@@ -74,25 +74,27 @@ function displayNumbers() {
 
 function drawDole(elements, numbers, index) {
   const ctx = elements[index].children[1].getContext("2d");
+  const y = Math.floor(Math.random()*4);
   if(numbers[index] > 1 && numbers[index] <= 10){
-    ctx.drawImage(image, (cardWidth * (numbers[index] - 1)), cardHeight, 50, 75, 0, 0, 300, 150);
+    ctx.drawImage(image, (cardWidth * (numbers[index] - 1)), (cardHeight * y), 50, 75, 0, 0, 300, 150);
   } else if(numbers[index] > 11){
-    ctx.drawImage(image, (cardWidth * (numbers[index] - 2)), cardHeight, 50, 75, 0, 0, 300, 150);
+    ctx.drawImage(image, (cardWidth * (numbers[index] - 2)), (cardHeight * y), 50, 75, 0, 0, 300, 150);
   } else if(numbers[index] === 11){
-    ctx.drawImage(image, 0, cardHeight, 50, 75, 0, 0, 300, 150);
+    ctx.drawImage(image, 0, (cardHeight * y), 50, 75, 0, 0, 300, 150);
   }
 }
 
 function drawGore(elements, numbers, index) {
   const ctx = elements[index + 1].getContext("2d");
+  const y = Math.floor(Math.random()*4)
   if (index === 0 && numbers[index] === 0) {
     ctx.drawImage(image, cardWidth * 2, cardHeight * 4, 50, 75, 0, 0, 300, 150);
   } else if (numbers[index / 2] === 0) {
     ctx.drawImage(image, cardWidth * 2, cardHeight * 4, 50, 75, 0, 0, 300, 150);
   } else if(numbers[index / 2] > 0 && numbers[index / 2] <= 10){
-    ctx.drawImage(image, (cardWidth * (numbers[index / 2] - 1)), cardHeight, 50, 75, 0, 0, 300, 150);
+    ctx.drawImage(image, (cardWidth * (numbers[index / 2] - 1)), (cardHeight * y), 50, 75, 0, 0, 300, 150);
   } else if(numbers[index / 2] > 10){
-    ctx.drawImage(image, (cardWidth * (numbers[index / 2] - 2)), cardHeight, 50, 75, 0, 0, 300, 150);
+    ctx.drawImage(image, (cardWidth * (numbers[index / 2] - 2)), (cardHeight * y), 50, 75, 0, 0, 300, 150);
   } 
 }
 
