@@ -18,4 +18,36 @@ body{
     font-family: "Pangolin", cursive;
     font-weight: 400;
     font-style: normal;
-  }
+}
+
+canvas{
+    border: 2px solid black;
+    width: 50px;
+    height: 80px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+#menu {
+    text-align: right;
+}
+
+#menu a {
+    padding: 10px;
+    color: white;
+    background-color: blue;
+    text-decoration: none;
+}
+
+hr {
+    border: 5px solid green;
+    border-radius: 5px;
+}
+
+#gore span {
+    display: none;
+}
+
+#dole span span{
+    display: none;
+}
