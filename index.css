@@ -28,6 +28,14 @@ canvas{
     margin: 10px;
 }
 
+@media screen and (min-width: 600px){
+      canvas{
+        width: 100px;
+        height: 160px;
+        border-radius: 10px;
+      } 
+}
+
 #menu {
     text-align: right;
 }
