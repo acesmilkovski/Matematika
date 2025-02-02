@@ -1,3 +1,5 @@
+
+
 // Cache DOM elements
 const goreElements = document.getElementById("gore").children;
 const doleElements = document.getElementById("dole").children;
@@ -18,13 +20,12 @@ function kalkulacija() {
 function test(event) {
   const sum = kalkulacija();
   const expectedSum = Number(event.target.previousElementSibling.textContent);
+  const tocno = document.getElementById("tocno");
+  const netocno = document.getElementById("netocno");
+  tocno.style.display = sum === expectedSum ? "inline" : "none";
+  netocno.style.display = sum !== expectedSum ? "inline" : "none";
   if (sum === expectedSum) {
-    netocno.style.display = "none";
-    tocno.style.display = "inline";
     displayNumbers();
-  }else{
-    tocno.style.display = "none";
-    netocno.style.display = "inline";
   }
 }
 
@@ -35,10 +36,6 @@ function goreNumbers() {
     Math.ceil(Math.random() * 13),
     Math.ceil(Math.random() * 13),
   ];
-
-  // Adjust x and y if they are greater than 10
-  if (x > 10) x++;
-  if (y > 10) y++;
 
   // Adjust x and y if their sum is greater than 14
   if (x + y > 14) {
@@ -74,28 +71,30 @@ function displayNumbers() {
 
 function drawDole(elements, numbers, index) {
   const ctx = elements[index].children[1].getContext("2d");
-  const y = Math.floor(Math.random()*4);
-  if(numbers[index] > 1 && numbers[index] <= 10){
-    ctx.drawImage(image, (cardWidth * (numbers[index] - 1)), (cardHeight * y), 50, 75, 0, 0, 300, 150);
-  } else if(numbers[index] > 11){
-    ctx.drawImage(image, (cardWidth * (numbers[index] - 2)), (cardHeight * y), 50, 75, 0, 0, 300, 150);
-  } else if(numbers[index] === 11){
+  const y = Math.floor(Math.random() * 4);
+  const number = numbers[index];
+  if (number > 1 && number <= 10) {
+    ctx.drawImage(image, (cardWidth * (number - 1)), (cardHeight * y), 50, 75, 0, 0, 300, 150);
+  } else if (number > 11) {
+    ctx.drawImage(image, (cardWidth * (number - 2)), (cardHeight * y), 50, 75, 0, 0, 300, 150);
+  } else if (number === 11) {
     ctx.drawImage(image, 0, (cardHeight * y), 50, 75, 0, 0, 300, 150);
   }
 }
 
 function drawGore(elements, numbers, index) {
   const ctx = elements[index + 1].getContext("2d");
-  const y = Math.floor(Math.random()*4)
-  if (index === 0 && numbers[index] === 0) {
+  const y = Math.floor(Math.random() * 4);
+  const number = numbers[index / 2];
+  if (index === 0 && number === 0) {
     ctx.drawImage(image, cardWidth * 2, cardHeight * 4, 50, 75, 0, 0, 300, 150);
-  } else if (numbers[index / 2] === 0) {
+  } else if (number === 0) {
     ctx.drawImage(image, cardWidth * 2, cardHeight * 4, 50, 75, 0, 0, 300, 150);
-  } else if(numbers[index / 2] > 0 && numbers[index / 2] <= 10){
-    ctx.drawImage(image, (cardWidth * (numbers[index / 2] - 1)), (cardHeight * y), 50, 75, 0, 0, 300, 150);
-  } else if(numbers[index / 2] > 10){
-    ctx.drawImage(image, (cardWidth * (numbers[index / 2] - 2)), (cardHeight * y), 50, 75, 0, 0, 300, 150);
-  } 
+  } else if (number > 0 && number <= 10) {
+    ctx.drawImage(image, (cardWidth * (number - 1)), (cardHeight * y), 50, 75, 0, 0, 300, 150);
+  } else if (number > 10) {
+    ctx.drawImage(image, (cardWidth * (number - 2)), (cardHeight * y), 50, 75, 0, 0, 300, 150);
+  }
 }
 
 // Optimize doleNumbers function
@@ -110,6 +109,7 @@ function doleNumbers() {
   numbers[replaceIndex] = kalkulacija();
   return numbers;
 }
+
 image.onload = () => {
   displayNumbers(); // Call displayNumbers *after* the image loads
 };
