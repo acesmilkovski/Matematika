@@ -110,5 +110,11 @@ function doleNumbers() {
   numbers[replaceIndex] = kalkulacija();
   return numbers;
 }
+image.onload = () => {
+  displayNumbers(); // Call displayNumbers *after* the image loads
+};
 
-displayNumbers();
+// In case the image is already cached
+if (image.complete) {
+  displayNumbers(); // Call displayNumbers if image is already loaded
+}
