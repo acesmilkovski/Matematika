@@ -4,8 +4,7 @@
 const goreElements = document.getElementById("gore").children;
 const doleElements = document.getElementById("dole").children;
 const image = document.getElementById("image");
-let cardWidth = image.width / 13;
-let cardHeight = image.height / 5;
+let cardWidth,cardHeight; 
 
 
 // Optimize kalkulacija function
