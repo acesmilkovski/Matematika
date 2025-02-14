@@ -111,11 +111,15 @@ function doleNumbers() {
   return numbers;
 }
 
+let imageLoaded = false; // Flag to track image load
+
 image.onload = () => {
+  imageLoaded = true;
   displayNumbers(); // Call displayNumbers *after* the image loads
 };
 
-// In case the image is already cached
-if (image.complete) {
+// Check if image is already complete AND if displayNumbers was already called
+if (image.complete && !imageLoaded) {
+  imageLoaded = true;
   displayNumbers(); // Call displayNumbers if image is already loaded
 }
