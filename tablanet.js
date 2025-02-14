@@ -3,9 +3,10 @@
 // Cache DOM elements
 const goreElements = document.getElementById("gore").children;
 const doleElements = document.getElementById("dole").children;
-const cardWidth = 640 / 13;
-const cardHeight = 383 / 5;
 const image = document.getElementById("image");
+const cardWidth = image.width / 13;
+const cardHeight = image.height / 5;
+
 
 // Optimize kalkulacija function
 function kalkulacija() {
@@ -74,11 +75,11 @@ function drawDole(elements, numbers, index) {
   const y = Math.floor(Math.random() * 4);
   const number = numbers[index];
   if (number > 1 && number <= 10) {
-    ctx.drawImage(image, (cardWidth * (number - 1)), (cardHeight * y), 50, 75, 0, 0, 300, 150);
+    ctx.drawImage(image, (cardWidth * (number - 1)), (cardHeight * y), 100, 150, 0, 0, 300, 150);
   } else if (number > 11) {
-    ctx.drawImage(image, (cardWidth * (number - 2)), (cardHeight * y), 50, 75, 0, 0, 300, 150);
+    ctx.drawImage(image, (cardWidth * (number - 2)), (cardHeight * y), 100, 150, 0, 0, 300, 150);
   } else if (number === 11) {
-    ctx.drawImage(image, 0, (cardHeight * y), 50, 75, 0, 0, 300, 150);
+    ctx.drawImage(image, 0, (cardHeight * y), 100, 150, 0, 0, 300, 150);
   }
 }
 
@@ -87,13 +88,13 @@ function drawGore(elements, numbers, index) {
   const y = Math.floor(Math.random() * 4);
   const number = numbers[index / 2];
   if (index === 0 && number === 0) {
-    ctx.drawImage(image, cardWidth * 2, cardHeight * 4, 50, 75, 0, 0, 300, 150);
+    ctx.drawImage(image, cardWidth * 2, cardHeight * 4, 100, 150, 0, 0, 300, 150);
   } else if (number === 0) {
-    ctx.drawImage(image, cardWidth * 2, cardHeight * 4, 50, 75, 0, 0, 300, 150);
+    ctx.drawImage(image, cardWidth * 2, cardHeight * 4, 100, 150, 0, 0, 300, 150);
   } else if (number > 0 && number <= 10) {
-    ctx.drawImage(image, (cardWidth * (number - 1)), (cardHeight * y), 50, 75, 0, 0, 300, 150);
+    ctx.drawImage(image, (cardWidth * (number - 1)), (cardHeight * y), 100, 150, 0, 0, 300, 150);
   } else if (number > 10) {
-    ctx.drawImage(image, (cardWidth * (number - 2)), (cardHeight * y), 50, 75, 0, 0, 300, 150);
+    ctx.drawImage(image, (cardWidth * (number - 2)), (cardHeight * y), 100, 150, 0, 0, 300, 150);
   }
 }
 
