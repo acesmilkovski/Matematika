@@ -4,8 +4,8 @@
 const goreElements = document.getElementById("gore").children;
 const doleElements = document.getElementById("dole").children;
 const image = document.getElementById("image");
-const cardWidth = image.width / 13;
-const cardHeight = image.height / 5;
+let cardWidth = image.width / 13;
+let cardHeight = image.height / 5;
 
 
 // Optimize kalkulacija function
@@ -111,15 +111,15 @@ function doleNumbers() {
   return numbers;
 }
 
-let imageLoaded = false; // Flag to track image load
-
 image.onload = () => {
-  imageLoaded = true;
+  cardWidth = image.width / 13;
+  cardHeight = image.height / 5;
   displayNumbers(); // Call displayNumbers *after* the image loads
 };
 
-// Check if image is already complete AND if displayNumbers was already called
-if (image.complete && !imageLoaded) {
-  imageLoaded = true;
+// In case the image is already cached
+if (image.complete) {
+  cardWidth = image.width / 13;
+  cardHeight = image.height / 5;
   displayNumbers(); // Call displayNumbers if image is already loaded
 }
