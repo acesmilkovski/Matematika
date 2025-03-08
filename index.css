@@ -12,6 +12,7 @@
 body{
     background-image: url('background-image.png');
     background-size: auto;
+    text-align: center;
 }
 
 .pangolin-regular {
@@ -34,17 +35,6 @@ canvas{
         height: 160px;
         border-radius: 10px;
       } 
-}
-
-#menu {
-    text-align: right;
-}
-
-#menu a {
-    padding: 10px;
-    color: white;
-    background-color: blue;
-    text-decoration: none;
 }
 
 hr {
