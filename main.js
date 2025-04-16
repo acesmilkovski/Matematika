@@ -5,10 +5,21 @@ let snake = [{ x: 10, y: 10 }];
 let direction = { x: 0, y: 0 };
 let food = { x: 15, y: 15 };
 let score = 0;
+let gameStarted = false; // Track if the game has started
 
 function startGame() {
     document.addEventListener('keydown', changeDirection);
-    setInterval(updateGame, 100);
+    canvas.addEventListener('mousemove', startGameWithMouse); // Add mousemove event listener
+    setInterval(() => {
+        if (gameStarted) updateGame(); // Only update the game if it has started
+    }, 100);
+}
+
+function startGameWithMouse(event) {
+    if (!gameStarted) {
+        changeDirectionWithMouse(event); // Set initial direction based on mouse
+        gameStarted = true; // Mark the game as started
+    }
 }
 
 function changeDirection(event) {
@@ -25,6 +36,29 @@ function changeDirection(event) {
         case 'ArrowRight':
             if (direction.x === 0) direction = { x: 1, y: 0 };
             break;
+    }
+}
+
+function changeDirectionWithMouse(event) {
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+
+    const head = snake[0];
+    const headX = head.x * 10 + 5; // Center of the snake's head
+    const headY = head.y * 10 + 5;
+
+    const deltaX = mouseX - headX;
+    const deltaY = mouseY - headY;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        // Horizontal movement
+        if (deltaX > 0 && direction.x === 0) direction = { x: 1, y: 0 };
+        else if (deltaX < 0 && direction.x === 0) direction = { x: -1, y: 0 };
+    } else {
+        // Vertical movement
+        if (deltaY > 0 && direction.y === 0) direction = { x: 0, y: 1 };
+        else if (deltaY < 0 && direction.y === 0) direction = { x: 0, y: -1 };
     }
 }
 
