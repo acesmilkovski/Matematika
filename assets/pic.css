@@ -1,0 +1,9 @@
+.footer-pics {
+    gap: 10px;
+    background-color: black;
+}
+
+.footer-pics img {
+    width: 32%;
+    border-radius: 10px;
+}
