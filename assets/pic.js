@@ -40,7 +40,7 @@ window.onload = function() {
         pic1.style.width = "0%";
         setTimeout(function() {
             pic1.style.transition = "width 1s";
-            pic1.style.width = "32%";
+            pic1.style.width = "30%";
         }, 1000);
         setTimeout(function() {
         pic1.src = picArray[0].src;
